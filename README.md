@@ -55,6 +55,7 @@ book-management-front/
 │ └── BookForm.tsx ← 등록 폼 (Client Component)
 └── libs/
 └── actions.ts ← Server Actions (선택)
+└── .env.local ← NEXT_PUBLIC_API_URL=http://localhost:8080
 ```
 
 ---
