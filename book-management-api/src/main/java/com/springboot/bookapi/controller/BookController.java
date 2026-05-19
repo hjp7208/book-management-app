@@ -50,7 +50,7 @@ public class BookController {
     }
 
     // 4. 도서 삭제
-    @PutMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
         bookService.deleteBook(id);
         return ResponseEntity.noContent().build();
