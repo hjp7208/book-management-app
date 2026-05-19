@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+  build:
+    commands:
+      - echo Backend Build Started...
+      - cd book-management-api
+      - chmod +x gradlew
+      - ./gradlew clean bootJar
+artifacts:
+  files:
+    - book-management-api/build/libs/book-management-app.jar
+    - book-management-api/Procfile
+    - book-management-api/.ebextensions/**/*
+  discard-paths: yes

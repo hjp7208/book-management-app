@@ -1,0 +1,43 @@
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    # AWS Elastic Beanstalk 환경 변수 활용 포맷
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/note_app?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    username: ${DB_USER:admin}
+    password: ${DB_PASS:test1234}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 30000
+      max-lifetime: 1800000
+      connection-timeout: 20000
+  jpa:
+    hibernate:
+      ddl-auto: update # 운영 환경 안정성을 위해 권장
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: false
+        show_sql: false
+
+
+# CORS 허용 출처 (Next.js FE ALB DNS)
+app:
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:3000}
+
+# 시스템 모니터링을 위한 Actuator 설정
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
+  endpoint:
+    health:
+      show-details: always
+
+server:
+  port: ${SERVER_PORT:8080}

@@ -1,0 +1,1 @@
+web: java -jar book-management-app.jar --server.port=5000
