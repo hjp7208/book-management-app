@@ -27,4 +27,7 @@ public class Book {
     @Builder.Default
     @Column(nullable = false)
     private Boolean available = true;
+
+    @Column(nullable = false)
+    private Boolean deleted = false;
 }

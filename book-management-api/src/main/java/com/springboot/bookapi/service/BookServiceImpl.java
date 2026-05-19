@@ -35,8 +35,9 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public void deleteBook(Long id) {
-        Book book = getBookById(id);
-        bookRepository.delete(book);
+        Book book = bookRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("책을 찾을 수 없음"));
+        book.setDeleted(true);
     }
 
     @Override

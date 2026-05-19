@@ -50,7 +50,7 @@ public class BookController {
     }
 
     // 4. 도서 삭제
-    @PutMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
         try {
             bookService.deleteBook(id);
@@ -61,7 +61,7 @@ public class BookController {
     }
 
     // 5. 도서 정보 수정
-    @DeleteMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
         try {
             Book updatedBook = bookService.updateBook(id, bookDetails);
