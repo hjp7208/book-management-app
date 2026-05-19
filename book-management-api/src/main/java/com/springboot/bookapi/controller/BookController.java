@@ -61,7 +61,7 @@ public class BookController {
     }
 
     // 5. 도서 정보 수정
-    @PutMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
         try {
             Book updatedBook = bookService.updateBook(id, bookDetails);
