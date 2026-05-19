@@ -18,12 +18,14 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
 
 // 서버 컴포넌트에서 순수 fetch 진행
 async function BookDataFetcher({ searchParams }: { searchParams: { type?: string; keyword?: string } }) {
-    let url = `${process.env.NEXT_PUBLIC_API_URL}`;
+    let url = `${process.env.NEXT_PUBLIC_API_URL}/books`;
 
     if (searchParams.keyword) {
         if (searchParams.type === 'author') url += `?author=${searchParams.keyword}`;
         else url += `?keyword=${searchParams.keyword}`;
     }
+
+    console.log("🔥 현재 찌르고 있는 API 주소:", url);
 
     const res = await fetch(url, { cache: 'no-store' });
     if (!res.ok) throw new Error('Failed to fetch books');
