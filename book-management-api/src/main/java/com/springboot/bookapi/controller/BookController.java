@@ -50,14 +50,10 @@ public class BookController {
     }
 
     // 4. 도서 삭제
-    @DeleteMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
-        try {
-            bookService.deleteBook(id);
-            return ResponseEntity.noContent().build();
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
-        }
+        bookService.deleteBook(id);
+        return ResponseEntity.noContent().build(); // 본문 없이 204 성공 코드만 반환
     }
 
     // 5. 도서 정보 수정

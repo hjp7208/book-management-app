@@ -36,10 +36,11 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional // 수정이 없어도 안전을 위해 추가
     public void deleteBook(Long id) {
-        Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("책을 찾을 수 없음"));
-        book.setDeleted(true);
-        bookRepository.save(book); // 명시적으로 저장
+        bookRepository.findById(id).ifPresent(book -> {
+            book.setDeleted(true);
+            // 🌟 repository.save(book)를 절대 호출하지 않습니다.
+            // 메서드가 종료될 때 JPA가 알아서 안전하게 UPDATE 쿼리를 날립니다.
+        });
     }
 
     @Override
