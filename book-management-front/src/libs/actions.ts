@@ -28,7 +28,11 @@ export async function deleteBook(id: number) {
     const res = await fetch(`${API_URL}/${id}`, {
         method: 'PUT',
     });
-    if (!res.ok) throw new Error('도서 삭제 실패');
+    if (!res.ok) {
+        const errorText = await res.text();
+        console.error("백엔드 에러 응답:", errorText);
+        throw new Error(`도서 삭제 실패: ${res.status} ${errorText}`);
+    }
 
     revalidatePath('/');
     // redirect 제거
