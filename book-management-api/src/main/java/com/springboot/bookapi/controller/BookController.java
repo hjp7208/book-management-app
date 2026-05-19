@@ -53,7 +53,7 @@ public class BookController {
     @PutMapping("/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
         bookService.deleteBook(id);
-        return ResponseEntity.noContent().build(); // 본문 없이 204 성공 코드만 반환
+        return ResponseEntity.noContent().build();
     }
 
     // 5. 도서 정보 수정
