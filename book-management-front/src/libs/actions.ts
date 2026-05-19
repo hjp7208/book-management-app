@@ -27,8 +27,6 @@ export async function createBook(formData: FormData) {
 export async function deleteBook(id: number) {
     const res = await fetch(`${API_URL}/${id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ isDeleted: true }) // (백엔드 엔티티의 삭제 플래그 변수명에 맞게 조정해 주세요)
     });
     if (!res.ok) throw new Error('도서 삭제 실패');
 

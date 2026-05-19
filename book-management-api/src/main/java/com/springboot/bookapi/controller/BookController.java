@@ -50,7 +50,7 @@ public class BookController {
     }
 
     // 4. 도서 삭제
-    @DeleteMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
         try {
             bookService.deleteBook(id);
