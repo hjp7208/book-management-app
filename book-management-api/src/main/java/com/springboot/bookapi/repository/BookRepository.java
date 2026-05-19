@@ -2,6 +2,7 @@ package com.springboot.bookapi.repository;
 
 import com.springboot.bookapi.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,6 +16,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     // 2. 제목 키워드 포함 검색 (ID 오름차순)
     List<Book> findByTitleContainingOrderByIdAsc(String keyword);
 
-    // BookRepository.java
-    List<Book> findByDeletedFalse(); // 삭제되지 않은 책만 가져오기
+    @Query("SELECT b FROM Book b WHERE b.deleted = false")
+    List<Book> findAllActive();
 }
