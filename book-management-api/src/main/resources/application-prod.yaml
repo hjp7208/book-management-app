@@ -4,7 +4,7 @@ spring:
       on-profile: prod
   datasource:
     # AWS Elastic Beanstalk 환경 변수 활용 포맷
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/note_app?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/book_app?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
     username: ${DB_USER:admin}
     password: ${DB_PASS:test1234}
     driver-class-name: com.mysql.cj.jdbc.Driver
