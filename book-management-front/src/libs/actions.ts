@@ -26,7 +26,7 @@ export async function createBook(formData: FormData) {
 
 export async function deleteBook(id: number) {
     const res = await fetch(`${API_URL}/${id}`, {
-        method: 'PUT',
+        method: 'DELETE',
     });
     if (!res.ok) {
         const errorText = await res.text();
