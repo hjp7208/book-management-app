@@ -13,7 +13,7 @@ export default async function EditBookPage({ params }: { params: Promise<{ id: s
     const resolvedParams = await params;
 
     // 1. 서버 컴포넌트(RSC) 영역에서 백엔드 데이터 가져옴.
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/${resolvedParams.id}`, { cache: 'no-store' });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books/${resolvedParams.id}`, { cache: 'no-store' });
 
     if (!res.ok) return notFound();
 

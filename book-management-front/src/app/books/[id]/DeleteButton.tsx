@@ -1,24 +1,25 @@
 'use client';
 
 import { useTransition } from 'react';
-import { useRouter } from 'next/navigation'; // 추가
+import { useRouter } from 'next/navigation';
 import { deleteBook } from '@/libs/actions';
-import { useToast } from '@/components/ToastProvider';
 
-export default function DeleteButton({ id }: { id: number }) {
-    const router = useRouter(); // 추가
+export default function DeleteButton({ id }: { id: string | number }) {
+    const router = useRouter();
     const [isPending, startTransition] = useTransition();
-    const { showToast } = useToast();
 
     const handleDelete = () => {
-        if (confirm('정말 삭제하시겠습니까?')) {
+        // 실수로 누르는 것을 방지하기 위해 한 번 물어봅니다.
+        if (confirm('정말로 이 도서를 삭제하시겠습니까?')) {
             startTransition(async () => {
                 try {
-                    await deleteBook(id);
-                    showToast('도서 삭제.');
-                    router.push('/'); // 삭제 후 메인으로 이동
-                } catch (e) {
-                    showToast('삭제 실패.', 'error');
+                    // id를 숫자로 변환해서 넘겨줍니다 (백엔드 타입에 맞게)
+                    await deleteBook(Number(id));
+                    alert('삭제 성공.');
+                    router.push('/'); // 삭제 후 메인 목록으로 튕겨냅니다.
+                } catch (error) {
+                    console.error(error);
+                    alert('삭제 중 오류가 발생.');
                 }
             });
         }

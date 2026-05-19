@@ -12,7 +12,10 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
 
     return (
         <div className="max-w-2xl bg-white dark:bg-slate-800 p-8 rounded-lg shadow">
-            <h2 className="text-3xl font-bold mb-4">{book.title}</h2>
+            <h2 className="text-3xl font-bold mb-4">
+                {book.isDeleted && <span className="text-red-500 text-lg mr-2">[삭제됨]</span>}
+                {book.title}
+            </h2>
             <div className="space-y-3 text-lg mb-8">
                 <p><span className="text-gray-500 dark:text-gray-400">작가:</span> {book.author}</p>
                 <p><span className="text-gray-500 dark:text-gray-400">가격:</span> {book.price ? `${book.price.toLocaleString()}원` : '미정'}</p>
