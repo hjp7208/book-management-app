@@ -14,4 +14,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     // 2. 제목 키워드 포함 검색 (ID 오름차순)
     List<Book> findByTitleContainingOrderByIdAsc(String keyword);
+
+    // BookRepository.java
+    List<Book> findByDeletedFalse(); // 삭제되지 않은 책만 가져오기
 }

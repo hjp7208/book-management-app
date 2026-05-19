@@ -15,9 +15,10 @@ public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
 
+    // BookServiceImpl.java 수정
     @Override
     public List<Book> getAllBooks() {
-        return bookRepository.findAll();
+        return bookRepository.findByDeletedFalse();
     }
 
     @Override
@@ -38,6 +39,7 @@ public class BookServiceImpl implements BookService {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("책을 찾을 수 없음"));
         book.setDeleted(true);
+        bookRepository.save(book);
     }
 
     @Override

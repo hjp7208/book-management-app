@@ -24,7 +24,6 @@ public class Book {
 
     private Integer price; // Nullable
 
-    @Builder.Default
     @Column(nullable = false)
     private Boolean available = true;
 
