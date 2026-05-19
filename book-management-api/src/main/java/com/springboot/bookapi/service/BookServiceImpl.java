@@ -34,25 +34,26 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    @Transactional
+    @Transactional // 수정이 없어도 안전을 위해 추가
     public void deleteBook(Long id) {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("책을 찾을 수 없음"));
         book.setDeleted(true);
+        bookRepository.save(book); // 명시적으로 저장
     }
 
     @Override
     @Transactional
     public Book updateBook(Long id, Book bookDetails) {
-        Book book = getBookById(id);
+        Book book = bookRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("책을 찾을 수 없음"));
 
-        // 더티 체킹(Dirty Checking)을 통한 변경 감지 수정
         book.setTitle(bookDetails.getTitle());
         book.setAuthor(bookDetails.getAuthor());
         book.setPrice(bookDetails.getPrice());
         book.setAvailable(bookDetails.getAvailable());
 
-        return book;
+        return bookRepository.save(book); // 명시적으로 저장
     }
 
     @Override
