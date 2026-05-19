@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    NEXT_PUBLIC_API_URL: "http://book-management-app-prod.eba-qj8nekzp.ap-northeast-2.elasticbeanstalk.com"
+    NEXT_PUBLIC_API_URL: "https://book-management-app-prod.eba-qj8nekzp.ap-northeast-2.elasticbeanstalk.com"
 
 phases:
   install:
