@@ -4,7 +4,7 @@ import DeleteButton from './DeleteButton';
 
 export default async function BookDetailPage({ params }: { params: Promise<{ id: string }> }) {
     const resolvedParams = await params;
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/${resolvedParams.id}`, { cache: 'no-store' });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books/${resolvedParams.id}`, { cache: 'no-store' });
 
     if (!res.ok) return notFound();
 
