@@ -21,7 +21,7 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
 
             <div className="flex gap-4">
                 <Link
-                    href={`/books/${book.id}/edit`}
+                    href={`/${book.id}/edit`}
                     className="px-6 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-md cursor-pointer transition-colors"
                 >
                     수정
