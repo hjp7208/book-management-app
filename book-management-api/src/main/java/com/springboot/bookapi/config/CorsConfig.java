@@ -20,6 +20,7 @@ public class CorsConfig implements WebMvcConfigurer {
         List<String> origins = new ArrayList<>();
         origins.add("http://localhost:3000");
         origins.add("https://www.hjp7208.site");
+        origins.add("https://www.hjp7208.site");
 
         // 2. Elastic Beanstalk 등 외부 환경 변수로 들어온 주소가 있다면 리스트에 추가
         if (allowedOrigins != null && !allowedOrigins.trim().isEmpty()) {
@@ -29,7 +30,7 @@ public class CorsConfig implements WebMvcConfigurer {
         }
 
         registry.addMapping("/api/**")
-                .allowedOrigins("http://localhost:3000")
+                .allowedOrigins(origins.toArray(new String[0]))
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true)
