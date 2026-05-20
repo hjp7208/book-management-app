@@ -23,30 +23,35 @@ public class DummyDataLoader {
                                 .author("신선영")
                                 .price(28000)
                                 .available(true)
+                                .deleted(false)
                                 .build(),
                         Book.builder()
                                 .title("자바 ORM 표준 JPA 프로그래밍")
                                 .author("김영한")
                                 .price(43000)
                                 .available(false) // 대출 중 상태 테스트용
+                                .deleted(false)
                                 .build(),
                         Book.builder()
                                 .title("클린 코드 (Clean Code)")
                                 .author("로버트 C. 마틴")
                                 .price(33000)
                                 .available(true)
+                                .deleted(false)
                                 .build(),
                         Book.builder()
                                 .title("모던 자바 인 액션")
                                 .author("라울-가브리엘 우르마")
                                 .price(35000)
                                 .available(true)
+                                .deleted(false)
                                 .build(),
                         Book.builder()
                                 .title("리팩터링 2판")
                                 .author("마틴 파울러")
                                 .price(35000)
                                 .available(false) // 대출 중 상태 테스트용
+                                .deleted(false)
                                 .build()
                 );
 
